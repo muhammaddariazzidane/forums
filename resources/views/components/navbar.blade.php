@@ -21,6 +21,9 @@
                 <li><a href="/chats" class="{{ Request::is('chats') ? 'active' : '' }}" data-turbolinks="true"
                         data-turbolinks-action="replace">Ngobs</a>
                 </li>
+                <li><a href="/dashboard" data-turbolinks-action="replace">dashboard
+                    </a>
+                </li>
             </ul>
             {{-- center --}}
             <div class="flex gap-6 lg:hidden relative">

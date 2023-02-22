@@ -1,12 +1,15 @@
 <?php
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
+use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\GithubController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,24 +22,14 @@ use App\Models\Post;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome', [
-//         'posts' => Post::with('user')->latest()->get()
-//     ]);
-// });
 Route::get('/', HomeController::class, 'index')->name('home');
-
-// Route::get('/forums', function () {
-//     return view('forums');
-// });
+Route::resource('posts', PostController::class)->middleware('auth');
+Route::resource('comments', CommentController::class)->middleware('auth');
+Route::resource('chats', ChatController::class)->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::resource('posts', PostController::class)->middleware('auth');
-Route::resource('comments', CommentController::class)->middleware('auth');
-Route::resource('chats', ChatController::class)->middleware('auth');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -44,7 +37,32 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/auth/redirect', [GithubController::class, 'redirect'])->name('github.login');
+Route::get('/auth/callback', [GithubController::class, 'callback']);
+// Route::get('/auth/redirect', function () {
+//     return Socialite::driver('github')->redirect();
+// })->name('github.login');
 
+// Route::get('/auth/callback', function () {
+//     $githubUser = Socialite::driver('github')->user();
+//     // dd($githubUser);
+//     $user = User::updateOrCreate([
+//         'github_id' => $githubUser->id,
+//     ], [
+//         'name' => $githubUser->nickname,
+//         'username' => $githubUser->nickname,
+//         'email' => $githubUser->email,
+//         'github_token' => $githubUser->token,
+//         'avatar' => $githubUser->avatar,
+//         'auth_type' => 'github',
+//         'password' => 'loremcuy',
+//         // 'github_refresh_token' => $githubUser->refreshToken,
+//     ]);
 
+//     Auth::login($user);
+
+//     return redirect('/dashboard');
+//     // $user->token
+// });
 
 require __DIR__ . '/auth.php';

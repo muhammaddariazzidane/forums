@@ -19,10 +19,6 @@ module.exports = {
                 new: "#A3C0E2",
             },
         },
-        // colors: {
-        //     primary: "#18273F",
-        //     blue: "#A3C0E2",
-        // },
     },
 
     plugins: [
