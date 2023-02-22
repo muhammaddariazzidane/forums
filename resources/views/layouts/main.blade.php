@@ -13,18 +13,24 @@
     <script src="https://unpkg.com/feather-icons"></script>
 
     <style>
-        #menu li a::after {
+        /* .active  */
+
+
+        .active::after {
             content: '';
             display: block;
             padding-bottom: 0.2rem;
             border-bottom: 0.2rem solid aqua;
-            transform: scaleX(0)
-        }
-
-        #menu li a:hover::after {
-            transition: 0.4s ease;
             transform: scaleX(1)
         }
+
+
+        /* .active::after {
+            content: '';
+            display: block;
+            padding-bottom: 0.2rem;
+            border-bottom: 0.2rem solid aqua;
+        } */
 
         * {
             font-family: 'Work Sans', sans-serif;
@@ -57,43 +63,16 @@
     style="background-color: rgb(21,31,50); background-image: radial-gradient(at 0% 0%, rgb(28,48,83)0, transparent 25%)">
 
     @include('components.navbar')
+    {{-- @include('components.modal.Modal-create') --}}
+    {{-- @include('components.modal.Modal-search') --}}
 
     @yield('content')
+
+
+
     <script>
         feather.replace()
-        const el = document.getElementById('messages')
-        el.scrollTop = el.scrollHeight
-        const btn = document.getElementById('btn')
-        const btn2 = document.getElementById('btn2')
-        const bg = document.getElementById('bg')
-        const fsc = document.getElementById('fsc')
-        const ipt = document.getElementById('ipt')
-        const burger = document.getElementById('burger')
-        const navMenu = document.getElementById('navMenu')
-
-
-        btn.addEventListener('click', () => {
-            bg.classList.toggle('hidden')
-
-        })
-        btn2.addEventListener('click', () => {
-            bg.classList.toggle('hidden')
-
-        })
-        burger.addEventListener('click', () => {
-            navMenu.classList.toggle('scale-0')
-
-        })
-
-
-        window.addEventListener('click', function(e) {
-            console.log(e.target);
-            if (e.target != btn && e.target != ipt) {
-                if (e.target == bg) {
-                    bg.classList.add('hidden');
-                }
-            }
-        });
+        // $("#messages").scrollTop($("#messages")[0].scrollHeight);
     </script>
 </body>
 
