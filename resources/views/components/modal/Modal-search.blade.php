@@ -13,10 +13,12 @@
 
                 <input type="text" name=""
                     class="w-full   rounded-full text-slate-200 bg-slate-800  focus:ring-cyan-400 focus:ring-2 duration-200 transition-all border-none outline-none "
-                    placeholder="press / anywhere">
+                    placeholder="cari">
                 <button type="submit" class="absolute right-3 bg-slate-800 top-2">
                     {{-- <div class="hidden">kirim</div> --}}
-                    <i data-feather="search" class="scale-90"></i>
+                    {{-- <i data-feather="search" class="scale-90"></i> --}}
+                    <i class="fas fa-search  text-lg mx-1 "></i>
+
 
                 </button>
             </form>

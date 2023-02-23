@@ -4,11 +4,12 @@
 
         <div class="flex justify-between items-center lg:px-11 px-6  p-6 text-white">
             <div class="items-center text-2xl font-semibold">
-                <div class="flex">
+                <div class="flex items-center">
                     <h1>
                         Zi <span class="text-violet-700 -mx-1">C</span> asts
                     </h1>
-                    <i data-feather="zap" class="rotate-12 mt-1 text-orange-500"></i>
+                    <i class="fab fa-grunt ml-2 text-red-600 text-4xl"></i>
+                    {{-- <i data-feather="zap" class="rotate-12 mt-1 text-orange-500"></i> --}}
                 </div>
             </div>
             {{-- center --}}
@@ -21,16 +22,21 @@
                 <li><a href="/chats" class="{{ Request::is('chats') ? 'active' : '' }}" data-turbolinks="true"
                         data-turbolinks-action="replace">Ngobs</a>
                 </li>
-                <li><a href="/dashboard" data-turbolinks-action="replace">dashboard
-                    </a>
-                </li>
+                @auth
+
+                    <li><a href="/dashboard" data-turbolinks-action="replace">dashboard
+                        </a>
+                    </li>
+                @endauth
             </ul>
             {{-- center --}}
             <div class="flex gap-6 lg:hidden relative">
                 <div x-data="{ open: false }">
                     <button id="btn" @click="open = ! open"
                         class="p-[0.4rem] active:scale-90  transition-all duration-500 rounded-lg bg-slate-700">
-                        <i data-feather="search" class="scale-90"></i>
+                        {{-- <i data-feather="search" class="scale-90"></i> --}}
+                        <i class="fas fa-search  text-lg mx-1 "></i>
+
                     </button>
                     @include('components.modal.Modal-search')
 
@@ -45,17 +51,52 @@
                     <div id="navMenu" x-show="menu" x-transition.duration.500ms
                         class="absolute  w-36 bg-slate-700 shadow-lg  rounded-lg rounded-tr-none top-12 right-4 transition-all duration-300 z-[999]">
                         <ul class="p-2 text-sm gap-6 space-y-2 mt-2 capitalize items-center">
+                            @auth
 
+                                <li class="flex ml-2 transition-all duration-300 hover:text-cyan-400 active:text-cyan-500">
+                                    <i class="fas fa-th text-[1.1rem]"></i>
+                                    {{-- <i class="fas fa-columns "></i> --}}
+                                    <a href="/dashboard" class="mb-3 items-center mx-2 block"
+                                        data-turbolinks-action="replace">Dashboard</a>
+                                </li>
+                            @endauth
                             <li class="flex ml-2 transition-all duration-300 hover:text-cyan-400 active:text-cyan-500">
-                                <i data-feather="briefcase" width="0.9rem"></i>
+                                {{-- <i data-feather="briefcase" width="0.9rem"></i> --}}
+                                <i class="fas fa-laptop-code text-[1.1rem]"></i>
                                 <a href="/" class="mb-3 items-center mx-2 block"
                                     data-turbolinks-action="replace">Forum</a>
                             </li>
                             <li class="flex ml-2 transition-all duration-300 hover:text-cyan-400 active:text-cyan-500">
-                                <i data-feather="coffee" width="0.9rem"></i>
+                                {{-- <i data-feather="coffee" width="0.9rem"></i> --}}
+                                <i class="fas fa-inbox text-[1.1rem]"></i>
                                 <a href="/chats" class="mb-3 items-center mx-2 block"
                                     data-turbolinks-action="replace">Ngobs</a>
                             </li>
+                            @guest
+
+                                <li class="flex ml-2 transition-all duration-300 hover:text-cyan-400 active:text-cyan-500">
+                                    {{-- <i data-feather="log-in" width="0.9rem"></i> --}}
+                                    <i class="fas fa-sign-in-alt text-[1.1rem]"></i>
+                                    <a href="{{ route('login') }}" class="mb-3 items-center mx-2 block"
+                                        data-turbolinks-action="replace">Login</a>
+                                </li>
+
+                            @endguest
+                            @auth
+
+                                <li class="flex ml-2 transition-all duration-300 hover:text-cyan-400 active:text-cyan-500">
+                                    {{-- <i data-feather="log-out" width="0.9rem"></i> --}}
+                                    <i class="fas fa-sign-out-alt text-[1.1rem]"></i>
+                                    <form action="{{ route('logout') }}" method="post" class="mb-3 items-center mx-2 block"
+                                        data-turbolinks-action="replace">
+                                        @csrf
+                                        <button type="submit">
+
+                                            Logout
+                                        </button>
+                                    </form>
+                                </li>
+                            @endauth
 
                         </ul>
                     </div>
@@ -66,7 +107,9 @@
                 <div x-data="{ open: false }">
                     <button id="btnSecond" @click="open = ! open"
                         class="p-[0.4rem] active:scale-90  transition-all duration-500 rounded-lg bg-slate-700">
-                        <i data-feather="search" class="scale-90"></i>
+                        {{-- <i data-feather="search" class="scale-90"></i> --}}
+                        <i class="fas fa-search  text-lg mx-1 "></i>
+
                     </button>
                     @include('components.modal.Modal-search')
                 </div>

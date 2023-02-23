@@ -4,7 +4,8 @@
             {{ __('Profile') }}
 
         </h2>
-        <img src="{{ auth()->user()->avatar }}" alt="">
+        {{-- @if (!$user->auth_type == 'google') --}}
+        {{-- @endif --}}
     </x-slot>
 
     <div class="py-12">

@@ -18,10 +18,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('avatar')->nullable();
+            $table->string('avatar')->nullable()->default('default.jpg');
             $table->string('github_id')->nullable();
+            $table->string('google_id')->nullable();
+            $table->string('google_token')->nullable();
             $table->string('github_token')->nullable();
-            $table->string('auth_type');
+            $table->string('auth_type')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

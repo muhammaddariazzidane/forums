@@ -11,14 +11,14 @@
             <form class="relative w-full z-[99999]" action="{{ route('posts.store') }}" method="post">
                 @csrf
                 <div class="pb-6 text-center text-white text-xl font-semibold">
-                    <h1>Create Post</h1>
+                    <h1>Buat Postingan</h1>
                 </div>
                 <textarea name="body"
                     class="w-full px-4 rounded-lg text-slate-200 bg-slate-900  focus:ring-cyan-400 focus:ring-2 duration-200 transition-all border-none outline-none "
-                    placeholder="press / anywhere"></textarea>
+                    placeholder="lorem ipsum"></textarea>
                 <button type="submit"
-                    class='p-2 transition-all duration-100 active:bg-slate-300 active:ring active:ring-cyan-400 bg-slate-400 float-right mt-4 text-black px-5 rounded-lg shadow'>
-                    Create
+                    class='py-[0.30rem] transition-all duration-100 active:bg-slate-300 active:ring active:ring-cyan-400 bg-slate-400 float-right mt-4 text-black px-5 rounded-lg shadow'>
+                    Buat
                 </button>
             </form>
         </div>

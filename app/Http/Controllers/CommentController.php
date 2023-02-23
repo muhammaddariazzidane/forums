@@ -75,6 +75,10 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment): RedirectResponse
     {
-        //
+        // dd()
+        // $this->authorize('delete', $comment);
+
+        $comment->delete();
+        return redirect()->back();
     }
 }
