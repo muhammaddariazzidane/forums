@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class PostController extends Controller
 {
@@ -41,22 +42,24 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post): Response
+    public function show(Post $post): View
     {
 
-        // dd($post->load('comments', 'user'));
-        return response()->view('components.content.Detail-post', [
+        // dd($post->comments);
+        return view('components.content.Detail-post', [
             // 'post' => Post::with('comments')
-            'post' => $post->load('comments', 'user')
+            'post' => $post
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $post): Response
+    public function edit(Post $post): View
     {
-        //
+        return view('components.content.edit-post', [
+            'post' => $post
+        ]);
     }
 
     /**
@@ -64,7 +67,12 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post): RedirectResponse
     {
-        //
+        $data = $request->validate([
+            'body' => 'required|string|max:255',
+        ]);
+
+        $post->update($data);
+        return redirect()->to('/');
     }
 
     /**

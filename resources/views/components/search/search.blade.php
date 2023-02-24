@@ -7,6 +7,6 @@
         </div>
         <input type="text" placeholder="cari"
             class="bg-primary w-full focus:placeholder:text-new/60 placeholder:text-new rounded-r-full p-2 border-none focus:ring-0 text-new"
-            name="" id="">
+            name="search" id="" value="{{ request('search') }}">
     </div>
 </form>

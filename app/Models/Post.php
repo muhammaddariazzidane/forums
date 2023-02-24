@@ -13,6 +13,14 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $with = ['user', 'comments'];
+
+    public function scopeSearch($query)
+    {
+        if (request('search')) {
+            return $query->where('body', 'like', '%' . request('search') . '%');
+        }
+    }
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

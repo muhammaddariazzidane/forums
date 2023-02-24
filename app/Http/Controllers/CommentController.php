@@ -67,7 +67,12 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment): RedirectResponse
     {
-        //
+        $data = $request->validate([
+            'value' => 'required|string|max:255',
+        ]);
+
+        $comment->update($data);
+        return redirect()->back();
     }
 
     /**

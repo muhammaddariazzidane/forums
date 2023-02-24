@@ -17,10 +17,10 @@
                                         <img class="rounded-t-lg" src="{{ $post->photo }}" alt="" />
                                         <div class="py-6 pb-12 px-6  rounded-lg bg-primary">
 
-                                            <p class="text-gray-200 tracking-wide">{{ $post->body }}</p>
+                                            <p class="text-gray-200 tracking-wide">{!! $post->body !!}</p>
 
                                         </div>
-                                        <div class="absolute bottom-2 right-2   rounded-lg">
+                                        <div class="absolute bottom-2 right-2 z-10  rounded-lg">
                                             <a href="{{ route('posts.show', $post) }}"
                                                 class="flex justify-center items-center gap-1">
                                                 <i class="fas fa-comments"></i>
@@ -28,8 +28,14 @@
                                             </a>
                                         </div>
                                         <div class="absolute left-2 bottom-2">
-                                            <small
-                                                class="text-xs text-blue-600">{{ $post->created_at->diffForhumans() }}</small>
+                                            <div class="flex gap-x-2">
+
+                                                <small
+                                                    class="text-xs text-blue-600">{{ $post->created_at->diffForhumans() }}</small>
+                                                @unless($post->created_at->eq($post->updated_at))
+                                                    <p class="text-xs  text-slate-500"> &middot; {{ __('di edit') }}</p>
+                                                @endunless
+                                            </div>
                                         </div>
                                         <div class=" absolute right-3 top-3 " x-data="{ opsi: false }">
                                             <div class="cursor-pointer text-xl" @click="opsi = ! opsi"

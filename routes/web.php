@@ -31,8 +31,9 @@ Route::resource('chats', ChatController::class)->middleware('auth');
 
 Route::get('/dashboard', function () {
     // dd(Post::with('user', 'comments')->latest()->get());
+    // dd(Post::all());
     return view('dashboard', [
-        'posts' => Post::with('user', 'comments')->latest()->get()
+        'posts' => Post::latest()->get()
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 

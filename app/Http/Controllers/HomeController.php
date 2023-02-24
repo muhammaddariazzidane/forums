@@ -14,9 +14,10 @@ class HomeController extends Controller
      */
     public function __invoke()
     {
+        // $posts = Post::with('user', 'comments')->latest();
 
         return view('welcome', [
-            'posts' => Post::with('user', 'comments')->latest()->get()
+            'posts' => Post::latest()->search()->get()
         ]);
     }
     // (): Response

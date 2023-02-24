@@ -10,9 +10,15 @@
                             {{ $p->user->name }}
                         </p>
                     </div>
-                    <p class="text-md">{{ $p->body }}</p>
+                    <p class="text-md">{!! $p->body !!}</p>
 
-                    <p class="mt-3 text-sm text-blue-600">{{ $p->created_at->diffForhumans() }}</p>
+                    <div class="flex gap-x-2 mt-3">
+
+                        <p class=" text-sm text-blue-600">{{ $p->created_at->diffForhumans() }}</p>
+                        @unless($p->created_at->eq($p->updated_at))
+                            <p class="text-sm  text-slate-500"> &middot; {{ __('di edit') }}</p>
+                        @endunless
+                    </div>
                     <div class="absolute top-4  rounded-full p-1 right-4">
                         <div class="flex justify-center items-center">
 
@@ -28,5 +34,5 @@
         </a>
     @endforeach
 @else
-    <h1 class="text-center text-white font-semibold text-2xl mt-12 ">Belum ada Postingan</h1>
+    <h1 class="text-center text-white font-semibold text-2xl mt-12 ">Postingan Tidak Ditemukan</h1>
 @endif

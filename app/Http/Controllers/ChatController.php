@@ -14,9 +14,8 @@ class ChatController extends Controller
      */
     public function index(): Response
     {
-        // dd(Chat::with('user')->get());
         return response()->view('forums', [
-            'chats' => Chat::with('user')->latest('id')->get()
+            'chats' => Chat::latest('id')->get()
         ]);
     }
 

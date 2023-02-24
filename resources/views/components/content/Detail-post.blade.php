@@ -11,10 +11,10 @@
                 </div>
                 <div class="w-full text-white mt-4 lg:p-0 p-4">
                     <div class="flex flex-col">
-                        <h1 class="font-semibold">{{ $post->user->name }}</h1>
+                        <h1 class="font-semibold truncate">{{ $post->user->name }}</h1>
                         <small class="text-slate-400 text-[0.6rem] my-1">{{ $post->created_at->diffForhumans() }}</small>
                         <div class="my-2">
-                            <p class="text-sm text-new">{{ $post->body }}</p>
+                            <p class="text-sm text-new">{!! $post->body !!}</p>
                         </div>
                     </div>
                 </div>

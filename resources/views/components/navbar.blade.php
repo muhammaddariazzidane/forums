@@ -1,5 +1,5 @@
 <div x-data="{ showBar: false }">
-    <nav class="top-0 right-0 left-0 w-full  fixed  z-[999]" :class="{ 'backdrop-blur-lg shadow-lg ': showBar }"
+    <nav class="top-0 right-0 left-0 w-full  fixed  z-[999]" :class="{ 'bg-primary shadow-lg ': showBar }"
         @scroll.window="showBar = (window.pageYOffset > 15) ? true :false">
 
         <div class="flex justify-between items-center lg:px-11 px-6  p-6 text-white">
@@ -43,10 +43,9 @@
                 </div>
                 <div x-data="{ menu: false }">
 
-                    <button class="block" id="burger" @click="menu = ! menu">
-                        <span class="my-2 block h-[2px] w-[30px] bg-slate-200"></span>
-                        <span class="my-2 block h-[2px] w-[30px] bg-slate-200"></span>
-                        <span class="my-2 block h-[2px] w-[30px] bg-slate-200"></span>
+                    <button class="block" id="burger" @click="menu = ! menu" @click.outside="menu = false">
+
+                        <i class=" text-[2.2rem]" x-bind:class="menu ? 'fas fa-times ' : 'fas fa-bars'"></i>
                     </button>
                     <div id="navMenu" x-show="menu" x-transition.duration.500ms
                         class="absolute  w-36 bg-slate-700 shadow-lg  rounded-lg rounded-tr-none top-12 right-4 transition-all duration-300 z-[999]">
