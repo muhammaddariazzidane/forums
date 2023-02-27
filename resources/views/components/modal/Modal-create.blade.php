@@ -17,7 +17,7 @@
                     class="w-full px-4 rounded-lg text-slate-200 bg-slate-900  focus:ring-cyan-400 focus:ring-2 duration-200 transition-all border-none outline-none "
                     placeholder="lorem ipsum"></textarea>
                 <button type="submit"
-                    class='py-[0.30rem] transition-all duration-100 active:bg-slate-300 active:ring active:ring-cyan-400 bg-slate-400 float-right mt-4 text-black px-5 rounded-lg shadow'>
+                    class='py-[0.30rem] transition-all font-semibold duration-100 active:bg-slate-300 active:ring active:ring-cyan-400 bg-slate-400 float-right mt-4 text-black px-5 rounded-lg shadow'>
                     Buat
                 </button>
             </form>

@@ -4,7 +4,7 @@
     <div class="mb-5">
         <h1 class="text-center text-2xl font-semibold text-white">Login</h1>
     </div>
-    <h5 class="text-center text-sm text-gray-700 dark:text-gray-300">Login dengan akun social media</h5>
+    <h5 class="text-center text-sm text-gray-700 dark:text-gray-300">Login dengan akun sosial media</h5>
 
     <div class="text-center flex justify-center gap-x-2 my-7 font-semibold text-white">
         <div>

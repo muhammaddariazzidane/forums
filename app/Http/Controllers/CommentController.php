@@ -7,6 +7,7 @@ use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class CommentController extends Controller
 {
@@ -49,9 +50,12 @@ class CommentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Comment $comment): Response
+    public function show(Comment $comment): View
     {
-        //
+        // dd($comment->load('replies'));
+        return view('components.comment.comment-detail', [
+            'comment' => $comment->load('replies', 'user')
+        ]);
     }
 
     /**

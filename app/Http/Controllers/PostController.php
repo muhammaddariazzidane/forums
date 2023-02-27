@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Reply;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -45,10 +46,14 @@ class PostController extends Controller
     public function show(Post $post): View
     {
 
-        // dd($post->comments);
+        // dd($post->comments->load('replies'));
+        // dd(Reply::latest()->get());
+        // dd($post->comments->load('replies'));
+        // dd($post->comments->load('replies'));
         return view('components.content.Detail-post', [
             // 'post' => Post::with('comments')
-            'post' => $post
+            'post' => $post,
+            // 'replies' => Reply::latest()->get()
         ]);
     }
 

@@ -32,7 +32,7 @@
             {{-- center --}}
             <div class="flex gap-6 lg:hidden relative">
                 <div x-data="{ open: false }">
-                    <button id="btn" @click="open = ! open"
+                    <button name="navToggle" id="btn" @click="open = ! open"
                         class="p-[0.4rem] active:scale-90  transition-all duration-500 rounded-lg bg-slate-700">
                         {{-- <i data-feather="search" class="scale-90"></i> --}}
                         <i class="fas fa-search  text-lg mx-1 "></i>
@@ -129,4 +129,5 @@
             </ul>
         </div>
     </nav>
+
 </div>

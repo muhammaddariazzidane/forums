@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Chat;
 use App\Models\Post;
+use App\Models\Reply;
 use App\Models\Comment;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -56,5 +57,9 @@ class User extends Authenticatable
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
+    }
+    public function replies(): HasMany
+    {
+        return $this->hasMany(Reply::class);
     }
 }

@@ -12,6 +12,7 @@ use App\Http\Controllers\GithubController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReplyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,18 @@ use App\Http\Controllers\ProfileController;
 */
 
 Route::get('/', HomeController::class, 'index')->name('home');
-Route::resource('posts', PostController::class)->middleware('auth');
 Route::resource('comments', CommentController::class)->middleware('auth');
 Route::resource('chats', ChatController::class)->middleware('auth');
+Route::resource('replies', ReplyController::class)->only('store')->middleware('auth');
+
+// Route::resource('posts', PostController::class)->middleware('auth');
+Route::resource('posts', PostController::class)->only('show');
+Route::middleware('auth')->group(function () {
+    Route::get('/posts{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+    Route::patch('/posts{post}', [PostController::class, 'update'])->name('posts.update');
+    Route::delete('/posts{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+});
 
 Route::get('/dashboard', function () {
     // dd(Post::with('user', 'comments')->latest()->get());

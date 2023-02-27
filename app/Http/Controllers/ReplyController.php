@@ -2,21 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Chat;
+use App\Models\Reply;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class ChatController extends Controller
+class ReplyController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(): Response
     {
-        return response()->view('forums', [
-            'chats' => Chat::latest()->get()
-        ]);
+        //
     }
 
     /**
@@ -34,16 +32,18 @@ class ChatController extends Controller
     {
         // dd($request);
         $data = $request->validate([
-            'message' => 'required'
+            'isi' => 'required'
         ]);
-        $request->user()->chats()->create($data);
+        $data['user_id'] = $request->user()->id;
+        $data['comment_id'] = $request->comment_id;
+        Reply::create($data);
         return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Chat $chat): Response
+    public function show(Reply $reply): Response
     {
         //
     }
@@ -51,7 +51,7 @@ class ChatController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Chat $chat): Response
+    public function edit(Reply $reply): Response
     {
         //
     }
@@ -59,7 +59,7 @@ class ChatController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Chat $chat): RedirectResponse
+    public function update(Request $request, Reply $reply): RedirectResponse
     {
         //
     }
@@ -67,7 +67,7 @@ class ChatController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Chat $chat): RedirectResponse
+    public function destroy(Reply $reply): RedirectResponse
     {
         //
     }
