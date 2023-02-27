@@ -79,7 +79,7 @@
                             placeholder="Bales naon weh" name="isi" id="" />
                         <div class="flex justify-end mt-3">
                             <button type="submit"
-                                class="p-2 text-sm bg-cyan-500 shadow-lg mb font-semibold text-white rounded-lg px-4">
+                                class="p-2 text-sm bg-sky-500 shadow-lg mb font-semibold text-white rounded-lg px-4">
                                 Balas
                             </button>
                         </div>
@@ -153,7 +153,7 @@
                             placeholder="Bales naon weh" name="isi" id="" />
                         <div class="flex justify-end mt-3">
                             <button type="submit"
-                                class="p-2 text-sm font-semibold bg-cyan-500 shadow-lg mb text-white rounded-lg px-4">
+                                class="p-2 text-sm font-semibold bg-sky-500 shadow-lg mb text-white rounded-lg px-4">
                                 Balas
                             </button>
                         </div>

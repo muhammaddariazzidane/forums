@@ -6,6 +6,6 @@
         placeholder="Komen naon weh" name="value" id="">{{ old('value') }}</textarea>
     <div class="flex justify-end mt-2">
         <button type="submit"
-            class="p-2 text-sm bg-sky-500 shadow-lg font-semibold text-white rounded-lg px-4">Kirim</button>
+            class="p-2 text-sm bg-sky-500 shadow-lg font-semibold text-white rounded-lg px-4">Komentar</button>
     </div>
 </form>

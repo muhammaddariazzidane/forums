@@ -6,7 +6,7 @@
             <div class="items-center text-2xl font-semibold">
                 <div class="flex items-center">
                     <h1>
-                        Zi <span class="text-violet-700 -mx-1">C</span> asts
+                        NgeBull
                     </h1>
                     <i class="fab fa-grunt ml-2 text-red-600 text-4xl"></i>
                     {{-- <i data-feather="zap" class="rotate-12 mt-1 text-orange-500"></i> --}}
@@ -20,7 +20,7 @@
                     </a>
                 </li>
                 <li><a href="/chats" class="{{ Request::is('chats') ? 'active' : '' }}" data-turbolinks="true"
-                        data-turbolinks-action="replace">Ngobs</a>
+                        data-turbolinks-action="replace">Ngobrol</a>
                 </li>
                 @auth
 
@@ -31,7 +31,7 @@
             </ul>
             {{-- center --}}
             <div class="flex gap-6 lg:hidden relative">
-                <div x-data="{ open: false }">
+                <div x-data="{ open: false }" {{ Request::is('chats') ? 'hidden' : '' }}>
                     <button name="navToggle" id="btn" @click="open = ! open"
                         class="p-[0.4rem] active:scale-90  transition-all duration-500 rounded-lg bg-slate-700">
                         {{-- <i data-feather="search" class="scale-90"></i> --}}
@@ -59,17 +59,19 @@
                                         data-turbolinks-action="replace">Dashboard</a>
                                 </li>
                             @endauth
-                            <li class="flex ml-2 transition-all duration-300 hover:text-cyan-400 active:text-cyan-500">
+                            <li
+                                class="flex ml-2 transition-all duration-300 hover:text-cyan-400 active:text-cyan-500 {{ Request::is('/') ? 'text-cyan-400' : '' }}">
                                 {{-- <i data-feather="briefcase" width="0.9rem"></i> --}}
                                 <i class="fas fa-laptop-code text-[1.1rem]"></i>
                                 <a href="/" class="mb-3 items-center mx-2 block"
                                     data-turbolinks-action="replace">Forum</a>
                             </li>
-                            <li class="flex ml-2 transition-all duration-300 hover:text-cyan-400 active:text-cyan-500">
+                            <li
+                                class="flex ml-2 transition-all duration-300 hover:text-cyan-400 active:text-cyan-500 {{ Request::is('chats') ? 'text-cyan-400' : '' }}">
                                 {{-- <i data-feather="coffee" width="0.9rem"></i> --}}
                                 <i class="fas fa-inbox text-[1.1rem]"></i>
                                 <a href="/chats" class="mb-3 items-center mx-2 block"
-                                    data-turbolinks-action="replace">Ngobs</a>
+                                    data-turbolinks-action="replace">Ngobrol</a>
                             </li>
                             @guest
 
@@ -103,7 +105,8 @@
             </div>
 
             <ul class="lg:flex hidden items-center justify-center gap-6">
-                <div x-data="{ open: false }">
+                <div x-data="{ open: false }" {{ Request::is('chats') ? 'hidden' : '' }}>
+
                     <button id="btnSecond" @click="open = ! open"
                         class="p-[0.4rem] active:scale-90  transition-all duration-500 rounded-lg bg-slate-700">
                         {{-- <i data-feather="search" class="scale-90"></i> --}}
@@ -124,7 +127,8 @@
                         </a>
                     </form>
                 @else
-                    <li><a href="{{ route('login') }}" class="font-semibold" data-turbolinks-action="replace">Login</a></li>
+                    <li><a href="{{ route('login') }}" class="font-semibold" data-turbolinks-action="replace">Login</a>
+                    </li>
                 @endauth
             </ul>
         </div>

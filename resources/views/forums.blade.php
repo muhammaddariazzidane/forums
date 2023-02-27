@@ -4,7 +4,7 @@
         <div class="text-center py-5 border-b mb-2 border-secondary">
             {{-- <div class="relative flex items-center space-x-4"> --}}
 
-            <h1 class="text-white text-xl font-semibold">Forum diskusi</h1>
+            <h1 class="text-white text-xl font-semibold">Forum Ngobrol</h1>
             {{-- </div> --}}
 
         </div>
